@@ -1,14 +1,14 @@
 package com.example.domain.entities
 
 data class ZoneQueue(
-    val busLiveQueue: List<Any>,
-    val busPriority: List<Any>,
+    val busLiveQueue: List<Car>,
+    val busPriority: List<Car>,
     val carLiveQueue: List<Car>,
-    val carPriority: List<Any>,
+    val carPriority: List<Car>,
     val info: ZoneInfo,
-    val motorcycleLiveQueue: List<Any>,
-    val motorcyclePriority: List<Any>,
+    val motorcycleLiveQueue: List<Car>,
+    val motorcyclePriority: List<Car>,
     val truckGpk: List<Any>,
-    val truckLiveQueue: List<Any>,
-    val truckPriority: List<Any>
+    val truckLiveQueue: List<Car>,
+    val truckPriority: List<Car>
 )

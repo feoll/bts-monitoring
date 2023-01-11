@@ -2,9 +2,9 @@ package com.example.domain.entities
 
 data class Car(
     val changedDate: String,
-    val orderId: Int,
+    val orderId: String,
     val registrationDate: String,
     val regnum: String,
-    val status: Int,
-    val typeQueue: Int
+    val status: Status,
+    val typeQueue: TypeQueue
 )

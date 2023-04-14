@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/zoneFragment">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.bts_monitoring.presentation.fragments.settings.SettingsFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.bts_monitoring.presentation.fragments.statistics.StatisticsFragment"
+        android:label="@string/statistics"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/zoneFragment"
+        android:name="com.example.bts_monitoring.presentation.fragments.zone.ZoneFragment"
+        android:label="@string/zones"
+        tools:layout="@layout/fragment_zone" >
+        <action
+            android:id="@+id/action_zoneFragment_to_zoneDetailsFragment"
+            app:destination="@id/zoneDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/zoneDetailsFragment"
+        android:name="com.example.bts_monitoring.presentation.fragments.zonedetails.ZoneDetailsFragment"
+        android:label="{label}"
+        tools:layout="@layout/fragment_zone_details" >
+        <action
+            android:id="@+id/action_zoneDetailsFragment_to_zoneFragment"
+            app:destination="@id/zoneFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_zoneDetailsFragment_to_carBottomSheet"
+            app:destination="@id/carBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/carBottomSheet"
+        android:name="com.example.bts_monitoring.presentation.fragments.zonedetails.bottomsheet.CarBottomSheet"
+        android:label="car_bottom_sheet"
+        tools:layout="@layout/car_bottom_sheet" >
+        <action
+            android:id="@+id/action_carBottomSheet_to_zoneDetailsFragment"
+            app:destination="@id/zoneDetailsFragment" />
+    </dialog>
+</navigation>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.domain.models.TypeCar"/>
+        <import type="com.example.domain.models.TypeQueue"/>
+        <import type="com.example.domain.models.Status"/>
+        <variable
+            name="viewModel"
+            type="com.example.bts_monitoring.presentation.viewmodels.zonedetails.ZoneDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.fragments.zonedetails.bottomsheet.CarBottomSheet">
+
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/carType_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/car_type_text"
+            android:textColor="?colorSurfaceInverse"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/carType_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carType_textView">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/carType_chipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:selectionRequired="true"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/passenger_car_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeCar="@{TypeCar.PASSENGER}"
+                        android:text="@string/passenger_car_chip" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/truck_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeCar="@{TypeCar.TRUCK}"
+                        android:text="@string/truck_chip" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/bus_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeCar="@{TypeCar.BUS}"
+                        android:text="@string/bus_chip" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/motorcycle_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeCar="@{TypeCar.MOTORCYCLE}"
+                        android:text="@string/motorcycle_chip" />
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/typeQueue_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/type_queue_text"
+            android:textColor="?colorSurfaceInverse"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carType_scrollView" />
+
+        <HorizontalScrollView
+            android:id="@+id/typeQueue_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeQueue_textView">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/typeQueue_chipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:selectionRequired="true"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/liveQueue_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeQueue="@{TypeQueue.LIVE}"
+                        android:text="@string/liveQueue_chip" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/priorityQueue_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:typeQueue="@{TypeQueue.PRIORITY}"
+                        android:text="@string/priorityQueue_chip" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/status_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/status"
+            android:textColor="?colorSurfaceInverse"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeQueue_scrollView" />
+
+        <HorizontalScrollView
+            android:id="@+id/status_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status_textView">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/status_chipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:selectionRequired="true"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/status_all_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:viewModel="@{viewModel}"
+                        app:status="@{Status.UNKNOWN}"
+                        android:text="@string/all_chip" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/status_arrived_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:status="@{Status.ARRIVED}"
+                        android:text="@string/status_arrived_chip"
+                        android:textColor="@color/general" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/status_called_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:status="@{Status.CALLED}"
+                        android:text="@string/status_called_chip"
+                        android:textColor="@color/yellow" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/status_cancelled_chip"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:viewModel="@{viewModel}"
+                        app:status="@{Status.CANCELLED}"
+                        android:text="@string/status_cancelled_chip"
+                        android:textColor="@color/red" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+<!--        <Button-->
+<!--            android:id="@+id/apply_button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:layout_marginEnd="24dp"-->
+<!--            android:layout_marginBottom="24dp"-->
+<!--            android:text="Применить"-->
+<!--            android:textAllCaps="false"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/status_scrollView" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

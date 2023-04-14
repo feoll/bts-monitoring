@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="carInfo"
+            type="com.example.domain.models.Car" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view"
+                statusColor="@{carInfo}"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                tools:background="@color/red" />
+
+            <TableLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/queue"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto"
+                        android:text="@{carInfo.orderId}"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        tools:text="1" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/reg_num"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.4"
+                        android:fontFamily="@font/roboto"
+                        android:text="@{carInfo.regnum}"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        tools:text="ННН343" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/reg_date"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto"
+                        android:text="@{carInfo.registrationDate}"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        tools:text="2022-12-17 06:07:20" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/status_changed"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto"
+                        android:text="@{carInfo.changedDate}"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        tools:text="2022-12-17 06:07:20" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/status"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        carStatus="@{carInfo}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.5"
+                        android:fontFamily="@font/roboto"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        tools:text="Вызван в ПП" />
+                </TableRow>
+
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

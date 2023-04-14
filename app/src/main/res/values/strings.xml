@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">BTS</string>
+    <string name="settings">Настройки</string>
+    <string name="statistics">Статистика</string>
+    <string name="zones">Зоны ожидания</string>
+    <string name="search">Поиск</string>
+
+    <string-array name="carNames">
+        <item>Легковой автомобиль</item>
+        <item>Грузовой автомобиль</item>
+        <item>Автобус</item>
+        <item>Мотоцикл</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="failed_to_load_data">Не удалось загрузить данные!</string>
+    <string name="car_type_text">Тип транспортного средства</string>
+    <string name="passenger_car_chip">Легковой автомобиль</string>
+    <string name="truck_chip">Грузовой автомобиль</string>
+    <string name="bus_chip">Автобус</string>
+    <string name="motorcycle_chip">Мотоцикл</string>
+    <string name="type_queue_text">Тип очереди</string>
+    <string name="liveQueue_chip">L Живая очередь</string>
+    <string name="priorityQueue_chip">P Приоритетная очередь</string>
+    <string name="status">Статус</string>
+    <string name="all_chip">Все</string>
+    <string name="status_arrived_chip">Прибыл</string>
+    <string name="status_called_chip">Вызван</string>
+    <string name="status_cancelled_chip">Аннулирован</string>
+    <string name="enter_car_number">Введите номер автомобиля</string>
+    <string name="error_get_data">Не удалось получить данные</string>
+    <string name="error_get_information_queue">Информация об очереди не найдена</string>
+    <string name="arrived">Прибыл</string>
+    <string name="called">Вызван</string>
+    <string name="cancelled">Аннулирован</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="status_notification">Статус:</string>
+    <string name="position_notification">Позиция:</string>
+    <string name="monitoring_car">Отслеживание автомобиля</string>
+    <string name="monitoring">Мониторинг</string>
+    <string name="track">Отслеживать</string>
+    <string name="tracking">Отслеживаете</string>
+    <string name="error_no_data">Список пуст</string>
+    <string name="sort">Сортировка</string>
+    <string name="reg_num">Регистрационный номер</string>
+    <string name="reg_date">Дата регистрации</string>
+    <string name="status_changed">Статус изменен</string>
+    <string name="queue">Порядок вызова</string>
+    <string name="all_passenger_car">Всего легковых машин</string>
+    <string name="all_cars">Всего транспортных средств</string>
+    <string name="registration">Регистрация</string>
+    <string name="priority">Приоритеты</string>
+    <string name="phone">Телефон</string>
+    <string name="registr_number">Регистрационный номер</string>
+    <string name="type_car">Тип транспортного средства</string>
+    <string name="profile">Профиль</string>
+
+</resources>

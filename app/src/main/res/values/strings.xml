@@ -56,5 +56,6 @@
     <string name="profile">Профиль</string>
     <string name="dark_theme">Темная тема</string>
     <string name="information">Информация</string>
+    <string name="filter">Фильтровать</string>
 
 </resources>

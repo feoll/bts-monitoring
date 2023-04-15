@@ -32,6 +32,19 @@
         <item name="windowNoTitle">true</item>
 
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
+
+        <!--Цвета для диаграммы-->
+        <item name="legendColor">@android:color/black</item>
+        <item name="pieHoleColor">@android:color/white</item>
+        <item name="pieCenterTitleColor">@android:color/black</item>
+        <item name="pieCenterSubtitleColor">@android:color/black</item>
+        <item name="pieValueTextColor">@android:color/black</item>
+        <item name="piePieceColor1">@color/piePieceColorLight1</item>
+        <item name="piePieceColor2">@color/piePieceColorLight2</item>
+        <item name="piePieceColor3">@color/piePieceColorLight3</item>
+        <item name="piePieceColor4">@color/piePieceColorLight4</item>
+        <item name="piePieceColor5">@color/piePieceColorLight5</item>
+        <item name="piePieceColor6">@color/piePieceColorLight6</item>
     </style>
 
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">

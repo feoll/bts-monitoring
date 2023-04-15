@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setupStatusBarColor()
         setupNavController()
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
     }
 

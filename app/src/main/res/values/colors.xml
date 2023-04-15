@@ -74,4 +74,19 @@
     <color name="chipBackgroundColor">@color/lightGray</color>
     <color name="checkedChipTextColor">@color/colorPrimary</color>
     <color name="chipTextColor">@color/darkGray</color>
+
+
+    <color name="piePieceColorDark1">#FDD835</color>
+    <color name="piePieceColorDark2">#F4511E</color>
+    <color name="piePieceColorDark3">#D81B60</color>
+    <color name="piePieceColorDark4">#1E88E5</color>
+    <color name="piePieceColorDark5">#43A047</color>
+    <color name="piePieceColorDark6">#C0CA33</color>
+
+    <color name="piePieceColorLight1">#EF9A9A</color>
+    <color name="piePieceColorLight2">#80CBC4</color>
+    <color name="piePieceColorLight3">#FFAB91</color>
+    <color name="piePieceColorLight4">#FFE082</color>
+    <color name="piePieceColorLight5">#9FA8DA</color>
+    <color name="piePieceColorLight6">#CE93D8</color>
 </resources>

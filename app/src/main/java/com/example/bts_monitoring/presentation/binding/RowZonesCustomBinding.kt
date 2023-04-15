@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.navigation.Navigation
 import com.example.bts_monitoring.R
 import com.example.bts_monitoring.presentation.fragments.zone.ZoneFragmentDirections
+import com.example.bts_monitoring.presentation.utils.color.ColorUtil
 import com.example.domain.models.Zone
 
 
@@ -30,23 +31,23 @@ class RowZonesCustomBinding {
             zone: Zone,
             observerId: String
         ) {
-            if (observerId.isEmpty()) {
-                button.text = button.context.getString(R.string.track)
-                return
-            }
-
             if (observerId == zone.id) {
                 button.text = button.context.getString(R.string.tracking)
-//                button.setBackgroundColor(
-//                    ContextCompat.getColor(
-//                        button.context,
-//                        R.color.md_theme_dark_onSurfaceVariant
-//                    )
-//                )
+                button.setBackgroundColor(
+                    ColorUtil.getColor(
+                        button.context,
+                        R.attr.colorOnSurfaceVariant
+                    )
+                )
             } else {
                 button.text = button.context.getString(R.string.track)
+                button.setBackgroundColor(
+                    ColorUtil.getColor(
+                        button.context,
+                        R.attr.colorPrimary
+                    )
+                )
             }
         }
-
     }
 }

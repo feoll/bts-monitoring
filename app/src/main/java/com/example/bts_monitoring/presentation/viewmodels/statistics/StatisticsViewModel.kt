@@ -14,11 +14,14 @@ import javax.inject.Inject
 @HiltViewModel
 class StatisticsViewModel @Inject constructor(
     private val getZonesUseCase: GetZonesUseCase
-): ViewModel() {
+) : ViewModel() {
 
     private val _zones = MutableLiveData<Result<List<Zone>>>()
     val zones: LiveData<Result<List<Zone>>> get() = _zones
 
+    init {
+        getZones()
+    }
 
     fun getZones() {
         viewModelScope.launch {

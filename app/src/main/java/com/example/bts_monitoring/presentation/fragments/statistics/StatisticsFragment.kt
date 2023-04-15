@@ -56,6 +56,11 @@ class StatisticsFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getZones()
+    }
+
     private fun setupPieChart() = with(binding) {
         pieChart.setNoDataText("Нет данных")
         pieChart.description.text = ""

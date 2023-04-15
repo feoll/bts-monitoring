@@ -1,5 +1,6 @@
 package com.example.domain.repository
 
+import com.example.domain.models.TypeAppTheme
 import com.example.domain.models.TypeCar
 
 
@@ -10,4 +11,7 @@ interface SettingsRepository {
     fun getCarType(): TypeCar
     fun saveObserverZoneId(id: String): Boolean
     fun getObserverZoneId(): String
+
+    fun saveTypeAppTheme(typeTheme: TypeAppTheme): Boolean
+    fun getTypeAppTheme(): TypeAppTheme
 }

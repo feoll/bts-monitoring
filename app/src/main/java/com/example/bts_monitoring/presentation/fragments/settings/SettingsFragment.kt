@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.bts_monitoring.R
 import com.example.bts_monitoring.databinding.FragmentSettingsBinding
+import com.example.bts_monitoring.presentation.activities.MainActivity
 import com.example.bts_monitoring.presentation.viewmodels.settings.SettingsViewModel
+import com.example.domain.models.TypeAppTheme
 import com.example.domain.models.TypeCar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,6 +58,16 @@ class SettingsFragment : Fragment() {
                 3 -> viewModel.saveCarType(type = TypeCar.MOTORCYCLE)
             }
         }
+
+        binding.switchTheme.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked) {
+                viewModel.saveTypeAppTheme(TypeAppTheme.DARK)
+                (activity as MainActivity).setDarkThemeApp(true)
+            } else {
+                viewModel.saveTypeAppTheme(TypeAppTheme.LIGHT)
+                (activity as MainActivity).setDarkThemeApp(false)
+            }
+        }
     }
 
     private fun setupObservers() {
@@ -72,6 +84,10 @@ class SettingsFragment : Fragment() {
                 else -> {}
             }
         }
+
+        viewModel.appTheme.observe(viewLifecycleOwner) { typeTheme ->
+            binding.switchTheme.isSelected = typeTheme == TypeAppTheme.DARK
+        }
     }
 
     private fun setupAutoCompleteTextAdapter() {
@@ -83,6 +99,7 @@ class SettingsFragment : Fragment() {
     private fun loadProfileData() {
         viewModel.loadRegNumber()
         viewModel.loadCarType()
+        viewModel.loadAppTheme()
     }
 
     override fun onDestroy() {

@@ -10,6 +10,15 @@
         tools:context=".presentation.fragments.settings.SettingsFragment">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/information"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/numberCarInputLayout"
             style="?attr/textInputOutlinedStyle"
@@ -44,6 +53,24 @@
                 app:simpleItems="@array/carNames" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/dark_theme"/>
 
     </LinearLayout>
 </layout>

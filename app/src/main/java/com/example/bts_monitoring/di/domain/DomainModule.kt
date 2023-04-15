@@ -57,6 +57,18 @@ class DomainModule {
 
     @Singleton
     @Provides
+    fun provideSaveTypeAppThemeUseCase(settingsRepository: SettingsRepository): SaveTypeAppThemeUseCase {
+        return SaveTypeAppThemeUseCase(repository = settingsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetTypeAppThemeUseCase(settingsRepository: SettingsRepository): GetTypeAppThemeUseCase {
+        return GetTypeAppThemeUseCase(repository = settingsRepository)
+    }
+
+    @Singleton
+    @Provides
     fun provideGetLiveQueueByCarTypeUseCase(): GetLiveQueueByCarTypeUseCase {
         return GetLiveQueueByCarTypeUseCase()
     }

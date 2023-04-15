@@ -17,8 +17,11 @@ import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundSe
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_ID
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_START
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_STOP
+import com.example.domain.models.TypeAppTheme
+import com.example.domain.usecases.settings.GetTypeAppThemeUseCase
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var toolbar: MaterialToolbar
+
+    @Inject lateinit var  getTypeAppThemeUseCase: GetTypeAppThemeUseCase
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +42,23 @@ class MainActivity : AppCompatActivity() {
         setupToolBar()
         setupStatusBarColor()
         setupNavController()
+        setupTypeAppTheme()
+    }
 
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    private fun setupTypeAppTheme() {
+        if(getTypeAppThemeUseCase() == TypeAppTheme.DARK) {
+            setDarkThemeApp(value = true)
+        } else {
+            setDarkThemeApp(value = false)
+        }
+    }
 
+    fun setDarkThemeApp(value: Boolean) {
+        if(value) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     private fun setupStatusBarColor() {

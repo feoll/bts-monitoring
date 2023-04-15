@@ -54,5 +54,7 @@
     <string name="registr_number">Регистрационный номер</string>
     <string name="type_car">Тип транспортного средства</string>
     <string name="profile">Профиль</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="information">Информация</string>
 
 </resources>

@@ -85,10 +85,10 @@
     <color name="piePieceColorDark5">#43A047</color>
     <color name="piePieceColorDark6">#C0CA33</color>
 
-    <color name="piePieceColorLight1">#EF9A9A</color>
-    <color name="piePieceColorLight2">#80CBC4</color>
-    <color name="piePieceColorLight3">#FFAB91</color>
-    <color name="piePieceColorLight4">#FFE082</color>
-    <color name="piePieceColorLight5">#9FA8DA</color>
-    <color name="piePieceColorLight6">#CE93D8</color>
+    <color name="piePieceColorLight1">#ff9191</color>
+    <color name="piePieceColorLight2">#ffb75f</color>
+    <color name="piePieceColorLight3">#fff56a</color>
+    <color name="piePieceColorLight4">#64d380</color>
+    <color name="piePieceColorLight5">#6480D3</color>
+    <color name="piePieceColorLight6">#64BDD3</color>
 </resources>

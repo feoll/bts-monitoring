@@ -68,6 +68,7 @@ class StatisticsFragment : Fragment() {
         l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
         l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
         l.orientation = Legend.LegendOrientation.VERTICAL
+        l.textSize = 14f
         l.setDrawInside(false)
         l.textColor = ColorUtil.getColor(requireContext(), R.attr.legendColor)
         pieChart.animateY(2000, Easing.EaseInOutCubic);
@@ -81,7 +82,7 @@ class StatisticsFragment : Fragment() {
         val span = SpannableString("Всего транспортных средств\n(cтатистика за день)")
         span.setSpan(ForegroundColorSpan(ColorUtil.getColor(requireContext(), R.attr.pieCenterTitleColor)), 0, 26, 0)
         span.setSpan(RelativeSizeSpan(2f), 0, 26, 0)
-        span.setSpan(ColorUtil.getColor(requireContext(), R.attr.pieCenterSubtitleColor), 26, span.length, 0)
+        span.setSpan(ForegroundColorSpan(ColorUtil.getColor(requireContext(), R.attr.pieCenterSubtitleColor)), 26, span.length, 0)
         return span
     }
 

@@ -18,5 +18,7 @@
         <attr name="piePieceColor5" format="color" />
         <attr name="piePieceColor6" format="color" />
 
+        <attr name="calledColor" format="color" />
+
     </declare-styleable>
 </resources>

@@ -34,6 +34,8 @@
 
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
 
+        <item name="calledColor">@color/yellow</item>
+
         <!--Цвета для диаграммы-->
         <item name="legendColor">@android:color/white</item>
         <item name="pieHoleColor">@android:color/white</item>

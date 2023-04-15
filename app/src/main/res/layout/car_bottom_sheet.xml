@@ -233,7 +233,7 @@
                         app:viewModel="@{viewModel}"
                         app:status="@{Status.CALLED}"
                         android:text="@string/status_called_chip"
-                        android:textColor="@color/yellow" />
+                        android:textColor="?calledColor" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/status_cancelled_chip"

@@ -86,7 +86,7 @@ class SettingsFragment : Fragment() {
         }
 
         viewModel.appTheme.observe(viewLifecycleOwner) { typeTheme ->
-            binding.switchTheme.isSelected = typeTheme == TypeAppTheme.DARK
+            binding.switchTheme.isChecked = typeTheme == TypeAppTheme.DARK
         }
     }
 

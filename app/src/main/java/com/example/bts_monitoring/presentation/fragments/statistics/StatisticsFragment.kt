@@ -1,12 +1,10 @@
 package com.example.bts_monitoring.presentation.fragments.statistics
 
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +21,6 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
-import com.google.android.material.color.MaterialColors
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -62,7 +58,7 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun setupPieChart() = with(binding) {
-        pieChart.setNoDataText("Нет данных")
+        pieChart.setNoDataText(getString(R.string.no_data))
         pieChart.description.text = ""
         val l: Legend = pieChart.getLegend()
         l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
@@ -79,7 +75,7 @@ class StatisticsFragment : Fragment() {
 
 
     private fun generateCenterText(): SpannableString {
-        val span = SpannableString("Всего транспортных средств\n(cтатистика за день)")
+        val span = SpannableString(getString(R.string.pieChartTitle))
         span.setSpan(ForegroundColorSpan(ColorUtil.getColor(requireContext(), R.attr.pieCenterTitleColor)), 0, 26, 0)
         span.setSpan(RelativeSizeSpan(2f), 0, 26, 0)
         span.setSpan(ForegroundColorSpan(ColorUtil.getColor(requireContext(), R.attr.pieCenterSubtitleColor)), 26, span.length, 0)

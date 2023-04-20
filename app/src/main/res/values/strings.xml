@@ -57,5 +57,7 @@
     <string name="dark_theme">Темная тема</string>
     <string name="information">Информация</string>
     <string name="filter">Фильтровать</string>
+    <string name="no_data">Нет данных</string>
+    <string name="pieChartTitle">Всего транспортных средств\n(cтатистика за день)</string>
 
 </resources>

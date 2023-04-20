@@ -1,16 +1,14 @@
 package com.example.bts_monitoring.presentation.fragments.settings
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.bts_monitoring.R
 import com.example.bts_monitoring.databinding.FragmentSettingsBinding
 import com.example.bts_monitoring.presentation.activities.MainActivity
+import com.example.bts_monitoring.presentation.fragments.base.BaseFragment
 import com.example.bts_monitoring.presentation.viewmodels.settings.SettingsViewModel
 import com.example.domain.models.TypeAppTheme
 import com.example.domain.models.TypeCar
@@ -18,21 +16,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SettingsFragment : Fragment() {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment_settings) {
 
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
 
     private val viewModel: SettingsViewModel by viewModels()
     private val carArray by lazy { resources.getStringArray(R.array.carNames) }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProfileData()
@@ -102,8 +90,4 @@ class SettingsFragment : Fragment() {
         viewModel.loadAppTheme()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 }

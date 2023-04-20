@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
@@ -15,16 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bts_monitoring.R
 import com.example.bts_monitoring.common.safeNavigate
 import com.example.bts_monitoring.databinding.FragmentZoneDetailsBinding
+import com.example.bts_monitoring.presentation.fragments.base.BaseFragment
 import com.example.bts_monitoring.presentation.utils.adapter.ZoneDetailsAdapter
 import com.example.bts_monitoring.presentation.viewmodels.zonedetails.ZoneDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ZoneDetailsFragment : Fragment(), MenuProvider {
-
-    private var _binding: FragmentZoneDetailsBinding? = null
-    private val binding get() = _binding!!
+class ZoneDetailsFragment : BaseFragment<FragmentZoneDetailsBinding>(R.layout.fragment_zone_details), MenuProvider {
 
     private val args by navArgs<ZoneDetailsFragmentArgs>()
     private val adapter by lazy { ZoneDetailsAdapter() }
@@ -41,17 +38,9 @@ class ZoneDetailsFragment : Fragment(), MenuProvider {
         return true
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentZoneDetailsBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-
+    override fun FragmentZoneDetailsBinding.initialize() {
         val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
-        return binding.root
+        menuHost.addMenuProvider(this@ZoneDetailsFragment, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -135,7 +124,6 @@ class ZoneDetailsFragment : Fragment(), MenuProvider {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
         viewModel.clearQueues()
     }
 }

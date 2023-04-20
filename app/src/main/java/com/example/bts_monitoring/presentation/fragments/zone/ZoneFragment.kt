@@ -3,13 +3,12 @@ package com.example.bts_monitoring.presentation.fragments.zone
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bts_monitoring.R
 import com.example.bts_monitoring.databinding.FragmentZoneBinding
+import com.example.bts_monitoring.presentation.fragments.base.BaseFragment
 import com.example.bts_monitoring.presentation.service.MonitoringService
 import com.example.bts_monitoring.presentation.utils.adapter.ZoneAdapter
 import com.example.bts_monitoring.presentation.viewmodels.zone.ZoneViewModel
@@ -17,10 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ClassCastException
 
 @AndroidEntryPoint
-class ZoneFragment : Fragment() {
-
-    private var _binding: FragmentZoneBinding? = null
-    private val binding get() = _binding!!
+class ZoneFragment : BaseFragment<FragmentZoneBinding>(R.layout.fragment_zone) {
 
     private val viewModel: ZoneViewModel by viewModels()
     private val adapter by lazy { ZoneAdapter(viewModel::saveAndLoadObserverZoneId) }
@@ -33,15 +29,6 @@ class ZoneFragment : Fragment() {
         } catch (ex: ClassCastException) {
             Log.d("ZoneFragment", ex.message.toString())
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentZoneBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,11 +88,6 @@ class ZoneFragment : Fragment() {
     private fun setupZoneRecyclerView() {
         binding.areasRecyclerView.adapter = adapter
         binding.areasRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
 }

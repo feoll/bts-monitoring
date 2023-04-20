@@ -1,6 +1,8 @@
 package com.example.bts_monitoring.presentation.fragments.zone
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bts_monitoring.databinding.FragmentZoneBinding
-import com.example.bts_monitoring.presentation.activities.MainActivity
+import com.example.bts_monitoring.presentation.service.MonitoringService
 import com.example.bts_monitoring.presentation.utils.adapter.ZoneAdapter
 import com.example.bts_monitoring.presentation.viewmodels.zone.ZoneViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.ClassCastException
 
 @AndroidEntryPoint
 class ZoneFragment : Fragment() {
@@ -21,6 +24,16 @@ class ZoneFragment : Fragment() {
 
     private val viewModel: ZoneViewModel by viewModels()
     private val adapter by lazy { ZoneAdapter(viewModel::saveAndLoadObserverZoneId) }
+    private lateinit var monitoringService: MonitoringService
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            monitoringService = context as MonitoringService
+        } catch (ex: ClassCastException) {
+            Log.d("ZoneFragment", ex.message.toString())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,9 +73,9 @@ class ZoneFragment : Fragment() {
             adapter.setObserverZoneId(id = id)
 
             if (id.isEmpty()) {
-                (activity as MainActivity).stopMonitoringCarService()
+                monitoringService.stopService()
             } else {
-                (activity as MainActivity).startMonitoringCarService()
+                monitoringService.startService()
             }
         }
     }

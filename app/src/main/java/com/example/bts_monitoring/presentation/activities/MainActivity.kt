@@ -17,6 +17,7 @@ import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundSe
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_ID
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_START
 import com.example.bts_monitoring.presentation.service.MonitoringCarForegroundService.Companion.COMMAND_STOP
+import com.example.bts_monitoring.presentation.service.MonitoringService
 import com.example.domain.models.TypeAppTheme
 import com.example.domain.usecases.settings.GetTypeAppThemeUseCase
 import com.google.android.material.appbar.MaterialToolbar
@@ -24,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MonitoringService {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -99,15 +100,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun startMonitoringCarService() {
+    private fun startMonitoringCarService() {
         val startIntent = Intent(this, MonitoringCarForegroundService::class.java)
         startIntent.putExtra(COMMAND_ID, COMMAND_START)
         startService(startIntent)
     }
 
-    fun stopMonitoringCarService() {
+    private fun stopMonitoringCarService() {
         val stopIntent = Intent(this, MonitoringCarForegroundService::class.java)
         stopIntent.putExtra(COMMAND_ID, COMMAND_STOP)
         startService(stopIntent)
+    }
+
+    override fun stopService() {
+        stopMonitoringCarService()
+    }
+
+    override fun startService() {
+        startMonitoringCarService()
     }
 }

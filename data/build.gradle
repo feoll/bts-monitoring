@@ -13,6 +13,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "ZONES_TOKEN", "\"${properties.getProperty("ZONES_TOKEN")}\""
+        buildConfigField "String", "ZONE_QUEUE_TOKEN", "\"${properties.getProperty("ZONE_QUEUE_TOKEN")}\""
     }
 
     buildTypes {

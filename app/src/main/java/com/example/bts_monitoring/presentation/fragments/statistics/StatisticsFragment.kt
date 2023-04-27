@@ -30,7 +30,7 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(R.layout.frag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupPieChart()
         setupObservers()
-    }
+  }
 
     private fun setupObservers() = with(viewModel) {
         zones.observe(viewLifecycleOwner) {

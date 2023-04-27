@@ -32,7 +32,7 @@ class ZoneViewModel @Inject constructor(
 
     fun loadZones() {
         viewModelScope.launch {
-            _zones.value = getZonesUseCase.invoke()
+            _zones.value = getZonesUseCase()!!
         }
     }
 

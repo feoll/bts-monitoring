@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -44,7 +45,10 @@ class MainActivity : AppCompatActivity(), MonitoringService {
         setupStatusBarColor()
         setupNavController()
         setupTypeAppTheme()
+        setWindowDecorFits()
     }
+
+    private fun setWindowDecorFits() = WindowCompat.setDecorFitsSystemWindows(window,false)
 
     private fun setupTypeAppTheme() {
         if(getTypeAppThemeUseCase() == TypeAppTheme.DARK) {

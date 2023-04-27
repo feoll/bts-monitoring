@@ -21,7 +21,7 @@ class StatisticsViewModel @Inject constructor(
 
     fun getZones() {
         viewModelScope.launch {
-            _zones.value = getZonesUseCase.invoke()
+            _zones.value = getZonesUseCase()!!
         }
     }
 }

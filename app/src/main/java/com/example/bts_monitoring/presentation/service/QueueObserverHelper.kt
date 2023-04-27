@@ -18,13 +18,7 @@ class QueueObserverHelper @Inject constructor(
     private val getCarTypeUseCase: GetCarTypeUseCase
 ) {
 
-    //    //private var zoneId: String = getObserverZoneIdUseCase()
     var regNumber: String = ""
-//    private var carType: TypeCar = getCarTypeUseCase()
-//
-//    //private var zoneId: String = "53d94097-2b34-11ec-8467-ac1f6bf889c0"
-////    var regNumber: String = "HAF283"
-////    private var carType: TypeCar = TypeCar.PASSENGER
 
 
     private suspend fun getObserverCarQueue(): Result<List<Car>> =

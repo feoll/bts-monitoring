@@ -21,10 +21,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ZoneDetailsFragment : BaseFragment<FragmentZoneDetailsBinding>(R.layout.fragment_zone_details), MenuProvider {
+class ZoneDetailsFragment :
+    BaseFragment<FragmentZoneDetailsBinding>(R.layout.fragment_zone_details), MenuProvider {
 
     private val args by navArgs<ZoneDetailsFragmentArgs>()
-    private val adapter by lazy { ZoneDetailsAdapter() }
+    private val adapter by lazy { ZoneDetailsAdapter(viewModel::saveObserverCar) }
     private val viewModel: ZoneDetailsViewModel by activityViewModels()
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) =
@@ -40,7 +41,11 @@ class ZoneDetailsFragment : BaseFragment<FragmentZoneDetailsBinding>(R.layout.fr
 
     override fun FragmentZoneDetailsBinding.initialize() {
         val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this@ZoneDetailsFragment, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        menuHost.addMenuProvider(
+            this@ZoneDetailsFragment,
+            viewLifecycleOwner,
+            Lifecycle.State.RESUMED
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -118,6 +123,11 @@ class ZoneDetailsFragment : BaseFragment<FragmentZoneDetailsBinding>(R.layout.fr
         }
         viewModel.typeCar.observe(viewLifecycleOwner) {
             viewModel.loadSortedCarQueue()
+        }
+        viewModel.toast.observe(viewLifecycleOwner) {
+            if (it != null) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

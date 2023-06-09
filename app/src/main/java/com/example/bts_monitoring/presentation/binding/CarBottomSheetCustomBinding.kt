@@ -9,8 +9,6 @@ import com.google.android.material.chip.Chip
 
 class CarBottomSheetCustomBinding {
     companion object {
-
-
         /**
          *  Набор привязок, которые нужны для сохранения состояния выбранного чипа в интерфейсе
          */
@@ -32,6 +30,5 @@ class CarBottomSheetCustomBinding {
         fun checkedStatus(chip: Chip, viewModel: ZoneDetailsViewModel, status: Status) {
             chip.isChecked = (viewModel.status.value == status)
         }
-
     }
 }

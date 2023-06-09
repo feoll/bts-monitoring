@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.*
+import com.example.domain.usecases.settings.SaveCarTypeUseCase
+import com.example.domain.usecases.settings.SaveRegNumberUseCase
 import com.example.domain.usecases.zone.GetLiveQueueByCarTypeUseCase
 import com.example.domain.usecases.zone.GetPriorityQueueByCarTypeUseCase
 import com.example.domain.usecases.zone.GetZoneQueueByIdUseCase
@@ -16,13 +18,17 @@ import javax.inject.Inject
 class ZoneDetailsViewModel @Inject constructor(
     private val getZoneQueueByIdUseCase: GetZoneQueueByIdUseCase,
     private val getLiveQueueByCarTypeUseCase: GetLiveQueueByCarTypeUseCase,
-    private val getPriorityQueueByCarTypeUseCase: GetPriorityQueueByCarTypeUseCase
+    private val getPriorityQueueByCarTypeUseCase: GetPriorityQueueByCarTypeUseCase,
+    private val saveRegNumberUseCase: SaveRegNumberUseCase,
+    private val saveCarTypeUseCase: SaveCarTypeUseCase
 ) : ViewModel() {
 
     private val _allQueue = MutableLiveData<Result<ZoneQueue>?>()
     private val _carQueue = MutableLiveData<Result<List<Car>>?>()
+    private val _toast = MutableLiveData<String?>()
     val allQueue: LiveData<Result<ZoneQueue>?> get() = _allQueue
     val carQueue: LiveData<Result<List<Car>>?> get() = _carQueue
+    val toast: LiveData<String?> get() = _toast
 
     val typeQueue = MutableLiveData<TypeQueue>()
     val status = MutableLiveData<Status>()
@@ -66,5 +72,14 @@ class ZoneDetailsViewModel @Inject constructor(
         if (status.value == Status.UNKNOWN) return queueList
 
         return queueList.filter { it.status == status.value }
+    }
+
+    fun saveObserverCar(regNumber: String) {
+        viewModelScope.launch {
+            saveRegNumberUseCase(number = regNumber)
+            typeCar.value?.let { saveCarTypeUseCase(typeCar = it) }
+            _toast.value = "Информация сохранена в профиль"
+            _toast.value = null
+        }
     }
 }

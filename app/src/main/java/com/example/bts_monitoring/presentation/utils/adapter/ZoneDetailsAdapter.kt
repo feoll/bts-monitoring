@@ -6,15 +6,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bts_monitoring.databinding.RowZoneDetailsBinding
 import com.example.domain.models.Car
+import com.example.domain.models.TypeCar
 
-class ZoneDetailsAdapter : RecyclerView.Adapter<ZoneDetailsAdapter.ViewHolder>() {
+class ZoneDetailsAdapter(private val saveRegNumberAndCarType: (String) -> Unit) : RecyclerView.Adapter<ZoneDetailsAdapter.ViewHolder>() {
 
     private var list: List<Car> = emptyList()
 
     class ViewHolder(private val binding: RowZoneDetailsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(carInfo: Car) {
+        fun bind(carInfo: Car, saveRegNumberAndCarType: (String) -> Unit) {
             binding.carInfo = carInfo
             binding.executePendingBindings()
+            binding.card.setOnClickListener{
+                saveRegNumberAndCarType(carInfo.regnum)
+            }
         }
 
         companion object {
@@ -38,7 +42,7 @@ class ZoneDetailsAdapter : RecyclerView.Adapter<ZoneDetailsAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], saveRegNumberAndCarType)
     }
 
     override fun getItemCount(): Int = list.size
